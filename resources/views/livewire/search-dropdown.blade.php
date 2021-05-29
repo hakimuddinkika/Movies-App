@@ -19,6 +19,9 @@
 	<div class="absolute top-0">
 		<svg class="fill-current w-4 text-gray-500 mt-2 ml-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
 	</div>
+
+	<div wire:loading class="spinner top-0 right-0 mr-4 mt-4"></div>
+
 	@if (strlen($search) > 2)
 		<div
 			class="z-50 absolute bg-gray-800 rounded text-sm w-64 mt-4"

@@ -15,6 +15,9 @@ class ActorsController extends Controller
 	 */
 	public function index($page = 1)
 	{
+
+		abort_if($page > 500, 204);
+
 		$arr['popularActors'] = Http::withToken(env('TMDB_TOKEN'))
 									->get('https://api.themoviedb.org/3/person/popular/?page='.$page)
 									->json()['results'];
@@ -58,7 +61,7 @@ class ActorsController extends Controller
 	 */
 	public function show($id)
 	{
-		//
+		return view('actors.show');
 	}
 
 	/**

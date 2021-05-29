@@ -10,7 +10,7 @@
 			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-16">
 				@foreach($popularActors as $actor)
 					<div class="actors mt-8">
-						<a href="#">
+						<a href="{{ route('actors.show', $actor['id']) }}">
 							@if($actor['profile_path'])
 								@php $profile_path = $actor['profile_path']; @endphp
 							@else
@@ -19,7 +19,7 @@
 							<img src="{{ $profile_path }}" alt="{{ $actor['name'] }}" class="hover:opacity-75 transition ease-in-out duration-150">
 						</a>
 						<div class="mt-2">
-							<a href="#" class="text-lg hover:text-gray-300">
+							<a href="{{ route('actors.show', $actor['id']) }}" class="text-lg hover:text-gray-300">
 								{{ $actor['name'] }}
 							</a>
 							<div class="text-sm truncate text-gray-400">{{ $actor['known_for'] }}</div>
@@ -47,13 +47,13 @@
 		{{-- End Pagination --}}
 
 		<!-- status is at bottom of scroll -->
-		<div class="page-load-status my-8">
+		<div class="page-load-status">
 			<div class="flex justify-center">
-				<div class="infinite-scroll-request spinner my-8 text-4xl">Loading..</div>
+				<div class="infinite-scroll-request spinner my-8 text-4xl text-white">&nbsp;</div>
 			</div>
 
 			<p class="infinite-scroll-last">End of content</p>
-			<p class="infinite-scroll-error">Error</p>
+			<p class="infinite-scroll-error">No more pages to load</p>
 		</div>
 	</div>
 @endsection
@@ -66,6 +66,7 @@
 		// options
 			path: '/actors/page/@{{#}}',
 			append: '.actors',
+			status: '.page-load-status'
 			// history: false,
 		});
 	</script>
